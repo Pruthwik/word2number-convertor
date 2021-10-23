@@ -70,10 +70,10 @@ def convert_word_expression_to_number(text, dict_word_number):
     # handle floats
     for index, word in enumerate(words):
         retrieved_number = change_word_to_number(word.lower(), dict_word_number)
-        if retrieved_number:
+        if retrieved_number is not None:
             number_index.append(index)
             list_numbers.append(retrieved_number)
-        elif word == 'and' and change_word_to_number(words[index - 1], dict_word_number) and change_word_to_number(words[index + 1], dict_word_number):
+        elif word == 'and' and change_word_to_number(words[index - 1], dict_word_number) is not None and change_word_to_number(words[index + 1], dict_word_number) is not None:
             number_index.append(index)
             list_numbers.append(0)
     if number_index:
